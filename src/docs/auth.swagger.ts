@@ -2,20 +2,19 @@ export const authDocs = {
   '/auth/register': {
     post: {
       tags: ['Auth'],
-      summary: 'Register a new user',
-      description: 'Creates a new user account and returns access and refresh tokens.',
+      summary: 'Register a new customer account',
+      description: 'Creates a new customer account and returns access and refresh tokens.',
       requestBody: {
         required: true,
         content: {
           'application/json': {
             schema: {
               type: 'object',
-              required: ['name', 'email', 'password', 'role'],
+              required: ['name', 'email', 'password'],
               properties: {
                 name: { type: 'string', example: 'John Doe' },
                 email: { type: 'string', format: 'email', example: 'john@example.com' },
-                password: { type: 'string', format: 'password', example: 'StrongPass123' },
-                role: { type: 'string', enum: ['consumer', 'business'], example: 'consumer' }
+                password: { type: 'string', format: 'password', example: 'StrongPass123' }
               }
             }
           }

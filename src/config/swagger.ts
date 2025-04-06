@@ -1,4 +1,5 @@
 import { authDocs } from '../docs/auth.swagger';
+import { profileDocs } from '../docs/profile.swagger';
 
 export const swaggerOptions = {
   openapi: '3.0.0',
@@ -25,6 +26,7 @@ export const swaggerOptions = {
   security: [{ bearerAuth: [] }],
   tags: [],
   paths: {
-    ...authDocs
+    ...authDocs,
+    ...profileDocs
   }
 };

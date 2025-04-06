@@ -12,7 +12,7 @@ export const register = async (req: Request, res: Response, next: NextFunction) 
   try {
     session.startTransaction(); // 2. Begin transaction
 
-    const { name, email, password, role } = req.body;
+    const { name, email, password } = req.body;
 
     // 3. Check if user already exists
     const existingUser: IUser | null = await User.findOne({ email }).session(session);
@@ -31,8 +31,7 @@ export const register = async (req: Request, res: Response, next: NextFunction) 
         {
           name,
           email,
-          password: hashedPassword,
-          role
+          password: hashedPassword
         }
       ],
       { session }

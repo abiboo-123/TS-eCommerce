@@ -1,53 +1,60 @@
-# 🛒 eCommerce Backend (TypeScript, Node.js, MongoDB)
+# 🛒 E-Commerce Backend API (TypeScript + MongoDB)
 
-This is a modular, scalable backend API for an eCommerce platform built using **Node.js**, **TypeScript**, and **MongoDB**.
-
-## ✅ Features Completed
-
-### 🔐 Authentication Module
-
-- Register (with role: consumer | business)
-- Login with JWT (access + refresh token)
-- Logout
-- Refresh Token
-- Change Password
-- Forgot Password with OTP verification
-- Reset Password with OTP
-- Role-based route protection (business, consumer)
-
-### 🧪 Validations
-
-- Zod schema validation
-- Middleware for body/query/param validation
-
-### 📄 API Documentation
-
-- Swagger/OpenAPI support
-- Token-based route documentation
+Welcome to the backend repository of a full-featured e-commerce application built using **Node.js**, **TypeScript**, **Express**, **MongoDB**, and
+**Zod** for validation. This project supports multiple user roles and focuses on clean architecture, validation, authentication, and scalability.
 
 ---
 
-## 🛠 Tech Stack
+## ✅ Features Implemented
 
-- Node.js + Express
-- TypeScript
-- MongoDB + Mongoose
-- Zod for validation
-- JWT for authentication
-- Swagger for API docs
-- Prettier + ESLint for code quality
+### 🔐 Authentication
+
+- Register, Login with access/refresh JWT tokens
+- Forgot password (OTP based) + Reset password
+- Change password (protected route)
+
+### 👤 User Profile
+
+- Create profile with image upload (Multer)
+- Update profile data and profile picture
+- Retrieve profile info
+
+### 📦 Address Management
+
+- Add/update/delete multiple addresses
+- Set default address
+
+### 🧾 Validation & Documentation
+
+- Zod validation for all endpoints
+- Swagger documentation for every route
+
+### 🔒 Middleware
+
+- Authentication middleware
+- Role-based access (admin / consumer)
 
 ---
 
-## 🚀 Getting Started
+## 🚧 Under Development
 
-1. Clone the repo
-2. Run `npm install`
-3. Create a `.env` file (see `.env.example`)
-4. Run the server:
-   ```bash
-   npm run dev
-   ```
+- Product module (admin-only product creation, editing, deletion)
+- Cart and checkout logic
+- Order management
+- Admin dashboard APIs
+- Global error handling improvements
+
+---
+
+## 🚀 Tech Stack
+
+- **Node.js** + **Express**
+- **TypeScript**
+- **MongoDB** + **Mongoose**
+- **Zod** (validation)
+- **JWT** for authentication
+- **Multer** for image uploads
+- **Swagger** for documentation
 
 ---
 
@@ -55,23 +62,69 @@ This is a modular, scalable backend API for an eCommerce platform built using **
 
 ```
 src/
-│
-├── config/         # DB & Swagger config
-├── controllers/    # Route logic
-├── docs/           # Swagger definitions
-├── middlewares/    # Reusable middleware
-├── models/         # Mongoose models
-├── routes/         # Express route declarations
-├── services/       # Business logic
-├── utils/          # Helpers (JWT, OTP, email, etc.)
-├── validations/    # Zod schema validations
-└── app.ts          # App entry point
+├── controllers
+├── routes
+├── models
+├── middlewares
+├── validations
+├── utils
+├── config
+└── app.ts
 ```
 
 ---
 
-## 📄 License
+## 📷 Image Uploads
 
-This project is licensed under the MIT License.
+Uploaded files (e.g. profile pictures) are stored in `/uploads/`. Express serves this folder statically, so uploaded files can be accessed via:
+
+```
+http://localhost:5000/uploads/profile/filename.jpg
+```
 
 ---
+
+## 📘 API Documentation
+
+Swagger is available at:
+
+```
+http://localhost:5000/api-docs
+```
+
+Use it to explore and test all available endpoints with real-time request/response samples.
+
+---
+
+## 🛠 Getting Started
+
+```bash
+# Install dependencies
+yarn install
+
+# Start in dev mode
+yarn dev
+
+# Build and start
+yarn build && yarn start
+```
+
+Make sure to configure your `.env` file properly (see `.env.example`).
+
+---
+
+## 🌐 Collaboration
+
+This backend is in active development and built with production practices in mind.
+
+🧑‍💻 **If you're a frontend developer and would like to collaborate on the frontend part, feel free to reach out!**
+
+---
+
+## 📫 Contact
+
+If you’re interested in collaborating or have questions, open an issue or contact me directly.
+
+---
+
+_This project is a backend-only build and will later connect to a complete frontend store (React, Next.js, etc.)_
