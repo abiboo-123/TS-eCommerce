@@ -7,7 +7,7 @@ import {
   getProfile,
   updateAddress,
   updateProfile
-} from '../controllers/profileController';
+} from '../controllers/profile.controller';
 import { validate } from '../middlewares/validation';
 import {
   addAddressValidator,
@@ -15,18 +15,19 @@ import {
   createProfileValidator,
   updateAddressValidator,
   updateProfileValidator
-} from '../validations/profileValidation';
+} from '../validations/profile.validation';
 import { authorization, authenticate } from '../middlewares/authMiddleware';
-import { upload } from '../utils/multer';
+import { upload } from '../utils/uploadFiles/profile.upload';
+import { validateUploadedImages } from '../validations/fileValidator';
 
 const router = Router();
 
 router.use(authenticate);
 router.use(authorization('consumer'));
 
-router.post('/', upload.fields([{ name: 'photo', maxCount: 1 }]), validate(createProfileValidator, 'body'), createProfile);
+router.post('/', upload.fields([{ name: 'photo', maxCount: 1 }]), validate(createProfileValidator, 'body'), validateUploadedImages, createProfile);
 router.get('/', getProfile);
-router.put('/', upload.fields([{ name: 'photo', maxCount: 1 }]), validate(updateProfileValidator, 'body'), updateProfile);
+router.put('/', upload.fields([{ name: 'photo', maxCount: 1 }]), validate(updateProfileValidator, 'body'), validateUploadedImages, updateProfile);
 
 router.post('/addresses', validate(addAddressValidator, 'body'), addAddress);
 router.get('/addresses', getAllAddresses);

@@ -1,6 +1,6 @@
 import { Request, Response, NextFunction } from 'express';
 import mongoose from 'mongoose';
-import User, { IUser } from '../models/userModel';
+import User, { IUser } from '../models/user.model';
 
 export const createProfile = async (req: Request, res: Response, next: NextFunction) => {
   const { phoneNumber } = req.body;

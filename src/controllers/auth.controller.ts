@@ -1,7 +1,7 @@
 import { Request, Response, NextFunction } from 'express';
 import mongoose from 'mongoose';
-import User, { IUser } from '../models/userModel';
-import { hashPassword, findUserByEmail, comparePassword } from '../services/authService';
+import User, { IUser } from '../models/user.model';
+import { hashPassword, findUserByEmail, comparePassword } from '../services/auth.service';
 import { generateAccessToken, generateRefreshToken, verifyRefreshToken, TokenPayload } from '../utils/jwt';
 import { generateOTP } from '../utils/otp';
 import { sendOtpEmail } from '../utils/email';

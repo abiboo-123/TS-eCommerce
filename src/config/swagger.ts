@@ -1,5 +1,6 @@
 import { authDocs } from '../docs/auth.swagger';
 import { profileDocs } from '../docs/profile.swagger';
+import { productDocs } from '../docs/product.swagger';
 
 export const swaggerOptions = {
   openapi: '3.0.0',
@@ -27,6 +28,7 @@ export const swaggerOptions = {
   tags: [],
   paths: {
     ...authDocs,
-    ...profileDocs
+    ...profileDocs,
+    ...productDocs
   }
 };

@@ -1,5 +1,5 @@
 import jwt, { Secret, SignOptions } from 'jsonwebtoken';
-import { IUser } from '../models/userModel';
+import { IUser } from '../models/user.model';
 
 type TokenPayload = {
   id: string;

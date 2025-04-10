@@ -1,5 +1,5 @@
 import bcrypt from 'bcrypt';
-import User, { IUser } from '../models/userModel';
+import User, { IUser } from '../models/user.model';
 import { promises } from 'dns';
 
 export const hashPassword = async (password: string): Promise<string> => {

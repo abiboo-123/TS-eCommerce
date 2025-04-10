@@ -1,5 +1,5 @@
 import { query, Router } from 'express';
-import { register, login, refreshToken, forgetPassword, resetPassword, changePassword } from '../controllers/authController';
+import { register, login, refreshToken, forgetPassword, resetPassword, changePassword } from '../controllers/auth.controller';
 import { validate } from '../middlewares/validation';
 import {
   registerValidator,
@@ -7,7 +7,7 @@ import {
   forgetPasswordValidator,
   resetPasswordValidator,
   changePasswordValidator
-} from '../validations/authValidation';
+} from '../validations/auth.validation';
 import { authorization, authenticate } from '../middlewares/authMiddleware';
 
 const router = Router();
