@@ -15,17 +15,19 @@
 | Module           | Key Features                                                                     |
 | ---------------- | -------------------------------------------------------------------------------- |
 | **Auth**         | Register/login (JWT), OTP password reset, role-based access (`admin`/`consumer`) |
-| **User Profile** | CRUD operations, image uploads (Multer)                                          |
-| **Addresses**    | Multiple addresses, default address logic                                        |
-| **Products**     | Admin-only CRUD, public browsing, image uploads, Zod validation                  |
+| **User Profile** | Create, update profile, image uploads (Multer)                                   |
+| **Addresses**    | CRUD for addresses, default address logic                                        |
+| **Products**     | Admin-only CRUD, public listing, image uploads, Zod validation                   |
+| **Cart**         | Add/update/remove products, quantity tracking, total price calculation           |
 | **API Docs**     | Interactive Swagger UI at `/api-docs`                                            |
 
 ### 🔜 **Upcoming Modules**
 
-- Cart & checkout flow
-- Order management
-- Admin dashboard APIs
-- Global error middleware
+- Checkout → convert cart to order
+- Orders collection & status handling
+- Admin dashboard features
+- Payment integration (Cash on Delivery, PayPal)
+- Global error handler & logging
 
 ---
 
@@ -59,8 +61,6 @@ open http://localhost:5000/api-docs
 
 ---
 
----
-
 ## 📁 Project Structure
 
 ```
@@ -82,6 +82,6 @@ src/
 
 ---
 
-## 🪪 License
+## 🕪 License
 
 This project is open-source and free to use under the MIT license.
