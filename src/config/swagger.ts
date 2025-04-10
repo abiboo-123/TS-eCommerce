@@ -2,6 +2,7 @@ import { authDocs } from '../docs/auth.swagger';
 import { profileDocs } from '../docs/profile.swagger';
 import { productDocs } from '../docs/product.swagger';
 import { cartDocs } from '../docs/cart.swagger';
+import { ordersDocs } from '../docs/orders.swagger';
 
 export const swaggerOptions = {
   openapi: '3.0.0',
@@ -31,6 +32,7 @@ export const swaggerOptions = {
     ...authDocs,
     ...profileDocs,
     ...productDocs,
-    ...cartDocs
+    ...cartDocs,
+    ...ordersDocs
   }
 };

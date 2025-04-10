@@ -4,6 +4,7 @@ import profileRouter from './profile.routes';
 import productAdminRouter from './product.admin.routes';
 import productRouter from './product.routes';
 import cartRouter from './cart.routes';
+import ordersRouter from './orders.routes';
 
 const router = Router();
 
@@ -12,5 +13,6 @@ router.use('/profiles', profileRouter);
 router.use('/admin/products', productAdminRouter);
 router.use('/products', productRouter);
 router.use('/cart', cartRouter);
+router.use('/orders', ordersRouter);
 
 export default router;

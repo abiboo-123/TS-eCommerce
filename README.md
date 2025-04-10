@@ -1,6 +1,7 @@
 # 🚀 E-Commerce Backend API (TypeScript + MongoDB)
 
-**Production-ready** backend for an e-commerce platform with **JWT auth**, **role-based access**, **Zod validation**, and **Swagger docs**.
+**Production-grade** backend powering an e-commerce platform with blazing-fast **JWT auth**, secure **role-based access**, precise **Zod validation**,
+and beautiful **Swagger documentation**.
 
 [![License](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)  
 [![TypeScript](https://img.shields.io/badge/TypeScript-5.0+-3178C6.svg)](https://www.typescriptlang.org/)  
@@ -15,19 +16,19 @@
 | Module           | Key Features                                                                     |
 | ---------------- | -------------------------------------------------------------------------------- |
 | **Auth**         | Register/login (JWT), OTP password reset, role-based access (`admin`/`consumer`) |
-| **User Profile** | Create, update profile, image uploads (Multer)                                   |
-| **Addresses**    | CRUD for addresses, default address logic                                        |
-| **Products**     | Admin-only CRUD, public listing, image uploads, Zod validation                   |
-| **Cart**         | Add/update/remove products, quantity tracking, total price calculation           |
+| **User Profile** | CRUD operations, image uploads (Multer)                                          |
+| **Addresses**    | Multiple addresses, default address logic                                        |
+| **Products**     | Admin-only CRUD, public browsing, image uploads, Zod validation                  |
+| **Cart**         | Add/remove/update cart items, calculate total                                    |
+| **Checkout**     | Place order from cart, optional coupon validation                                |
+| **Orders**       | View, cancel, return orders with stock updates                                   |
 | **API Docs**     | Interactive Swagger UI at `/api-docs`                                            |
 
 ### 🔜 **Upcoming Modules**
 
-- Checkout → convert cart to order
-- Orders collection & status handling
-- Admin dashboard features
-- Payment integration (Cash on Delivery, PayPal)
-- Global error handler & logging
+- Admin dashboard APIs
+- Global error middleware
+- PayPal integration (payments)
 
 ---
 
@@ -82,6 +83,13 @@ src/
 
 ---
 
-## 🕪 License
+## 🤝 Looking to Collaborate?
+
+🎨 **Frontend developers!** If you're excited about building clean, interactive, and responsive UI — this is your moment! This backend is fully
+functional and ready for frontend integration. Let’s team up and build something awesome!
+
+---
+
+## 🪪 License
 
 This project is open-source and free to use under the MIT license.

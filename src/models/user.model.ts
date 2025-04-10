@@ -1,6 +1,6 @@
 import mongoose, { Schema, Document, Types } from 'mongoose';
 
-export interface Address extends Document {
+export interface IAddress extends Document {
   _id: Types.ObjectId;
   street: string;
   houseNumber?: number;
@@ -15,7 +15,7 @@ export interface IUser extends Document {
   role: 'consumer' | 'admin';
 
   phoneNumber?: string;
-  address: Types.DocumentArray<Address>;
+  address: Types.DocumentArray<IAddress>;
   profileImage?: string;
 
   otp?: string;

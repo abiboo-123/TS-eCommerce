@@ -2,6 +2,8 @@ import { Request, Response, NextFunction } from 'express';
 import mongoose from 'mongoose';
 import Cart, { ICart, ICartItem } from '../models/cart.model';
 import Product from '../models/product.model';
+import { checkOut } from '../services/cart.service';
+import { IOrder } from '../models/orders.model';
 
 export const addToCart = async (req: Request, res: Response, next: NextFunction) => {
   const { productId, quantity } = req.body;
@@ -148,6 +150,10 @@ export const updateCartItemQuantity = async (req: Request, res: Response, next: 
 
 export const checkout = async (req: Request, res: Response, next: NextFunction) => {
   const userId = req.user?.id;
+  if (!userId) {
+    return res.status(401).json({ message: 'Unauthorized' });
+  }
+  const { addressId, coupon } = req.body;
 
   try {
     const cart = await Cart.findOne({ userId });
@@ -155,18 +161,16 @@ export const checkout = async (req: Request, res: Response, next: NextFunction) 
       return res.status(404).json({ message: 'Cart not found' });
     }
 
-    /**
-     * Move cart products and quantities to order history, and products and total price to orders
-     *
-     *             TODO
-     */
-
+    if (cart.items.length === 0) {
+      return res.status(400).json({ message: 'Cart is empty' });
+    }
+    const order: null | IOrder = await checkOut(userId, addressId, coupon);
     cart.items = [];
     cart.totalPrice = 0;
 
     await cart.save();
 
-    res.status(200).json({ message: 'Checkout successful', cart });
+    res.status(200).json({ message: 'Checkout successful', order });
   } catch (err) {
     next(err);
   }

@@ -118,13 +118,68 @@ export const cartDocs = {
   '/cart/checkout': {
     post: {
       tags: ['Cart'],
-      summary: 'Checkout cart',
-      description: 'Processes the cart and prepares it for order placement (cash on delivery).',
-      security: [{ bearerAuth: [] }],
+      summary: 'Checkout the current cart',
+      description: 'Creates a new order using the cart contents. Applies a coupon (if valid) and uses the selected shipping address.',
+      security: [
+        {
+          bearerAuth: []
+        }
+      ],
+      requestBody: {
+        required: true,
+        content: {
+          'application/json': {
+            schema: {
+              type: 'object',
+              required: ['addressId'],
+              properties: {
+                addressId: {
+                  type: 'string',
+                  example: '660d8b7a8c1f2c2a5e9f442a'
+                },
+                coupon: {
+                  type: 'string',
+                  example: 'WELCOME10',
+                  description: 'Optional coupon code to apply discount'
+                }
+              }
+            }
+          }
+        }
+      },
       responses: {
-        200: { description: 'Checkout successful' },
-        404: { description: 'Cart not found' },
-        500: { description: 'Internal server error' }
+        200: {
+          description: 'Checkout completed successfully',
+          content: {
+            'application/json': {
+              schema: {
+                type: 'object',
+                properties: {
+                  message: {
+                    type: 'string',
+                    example: 'Checkout successful'
+                  },
+                  order: {
+                    type: 'object',
+                    description: 'The newly created order object'
+                  }
+                }
+              }
+            }
+          }
+        },
+        400: {
+          description: 'Cart is empty or coupon invalid'
+        },
+        401: {
+          description: 'Unauthorized'
+        },
+        404: {
+          description: 'Cart not found or Address not found'
+        },
+        500: {
+          description: 'Internal server error'
+        }
       }
     }
   }
