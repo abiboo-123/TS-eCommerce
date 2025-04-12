@@ -2,6 +2,8 @@ import { Request, Response, NextFunction } from 'express';
 import mongoose from 'mongoose';
 import Order, { IOrder, IOrderItem } from '../models/orders.model';
 import Product, { IProduct } from '../models/product.model';
+import { AppError } from '../utils/AppError';
+import logger from '../utils/logger';
 
 export const getOrders = async (req: Request, res: Response, next: NextFunction) => {
   const userId = req.user?.id;
@@ -15,8 +17,11 @@ export const getOrders = async (req: Request, res: Response, next: NextFunction)
 
     const total = await Order.countDocuments({ user: userId });
     if (orders.length === 0) {
-      return res.status(404).json({ message: 'No orders found' });
+      return next(new AppError('No orders found', 404));
     }
+
+    logger.info(`Orders retrieved successfully for user: ${userId}`);
+
     res.status(200).json({
       message: 'Orders found successfully',
       orders,
@@ -39,8 +44,10 @@ export const getOrderById = async (req: Request, res: Response, next: NextFuncti
   try {
     const order: IOrder | null = await Order.findOne({ _id: orderId, user: userId }).populate('items.product');
     if (!order) {
-      return res.status(404).json({ message: 'Order not found' });
+      return next(new AppError('Order not found', 404));
     }
+
+    logger.info(`Order retrieved successfully for user: ${userId}`);
 
     res.status(200).json({ message: 'order found successfully', order });
   } catch (err) {
@@ -64,11 +71,11 @@ export const cancelOrder = async (req: Request, res: Response, next: NextFunctio
   try {
     const order: IOrder | null = await Order.findOne({ _id: orderId, user: userId });
     if (!order) {
-      return res.status(404).json({ message: 'Order not found' });
+      return next(new AppError('Order not found', 404));
     }
 
     if (order.orderStatus === 'cancelled' || order.orderStatus === 'returned') {
-      return res.status(400).json({ message: 'Order is already cancelled or returned' });
+      return next(new AppError('Order is already cancelled or returned', 400));
     }
 
     // Alert the stock of the products in the order
@@ -85,6 +92,8 @@ export const cancelOrder = async (req: Request, res: Response, next: NextFunctio
     order.orderStatus = 'cancelled';
     await order.save();
 
+    logger.info(`Order cancelled successfully for user: ${userId}`);
+
     res.status(200).json({ message: 'Order cancelled successfully', order });
   } catch (err) {
     next(err);
@@ -98,11 +107,11 @@ export const returnOrder = async (req: Request, res: Response, next: NextFunctio
   try {
     const order: IOrder | null = await Order.findOne({ _id: orderId, user: userId });
     if (!order) {
-      return res.status(404).json({ message: 'Order not found' });
+      return next(new AppError('Order not found', 404));
     }
 
     if (order.orderStatus === 'returned') {
-      return res.status(400).json({ message: 'Order is already returned' });
+      return next(new AppError('Order is already returned', 400));
     }
 
     // Alert the stock of the products in the order
@@ -118,6 +127,8 @@ export const returnOrder = async (req: Request, res: Response, next: NextFunctio
 
     order.orderStatus = 'returned';
     await order.save();
+
+    logger.info(`Order returned successfully for user: ${userId}`);
 
     res.status(200).json({ message: 'Order returned successfully', order });
   } catch (err) {

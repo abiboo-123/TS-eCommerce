@@ -25,9 +25,9 @@ const router = Router();
 router.use(authenticate);
 router.use(authorization('consumer'));
 
-router.post('/', upload.fields([{ name: 'photo', maxCount: 1 }]), validate(createProfileValidator, 'body'), validateUploadedImages, createProfile);
+router.post('/', upload.single('photo'), validate(createProfileValidator, 'body'), validateUploadedImages, createProfile);
 router.get('/', getProfile);
-router.put('/', upload.fields([{ name: 'photo', maxCount: 1 }]), validate(updateProfileValidator, 'body'), validateUploadedImages, updateProfile);
+router.put('/', upload.single('photo'), validate(updateProfileValidator, 'body'), validateUploadedImages, updateProfile);
 
 router.post('/addresses', validate(addAddressValidator, 'body'), addAddress);
 router.get('/addresses', getAllAddresses);

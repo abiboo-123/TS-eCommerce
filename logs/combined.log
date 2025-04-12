@@ -1,0 +1,21 @@
+2025-04-12 21:32:03 [error]: [POST] /auth/login → Invalid email or password
+2025-04-12 21:32:36 [info]: User registered successfully: 67fabfd36a82fce929640f04
+2025-04-12 21:34:37 [info]: Profile retrieved successfully for user: 67fabfd36a82fce929640f04
+2025-04-12 21:37:55 [info]: Profile created successfully for user: 67fabfd36a82fce929640f04
+2025-04-12 21:39:52 [info]: Addresses retrieved successfully for user: 67fabfd36a82fce929640f04
+2025-04-12 21:43:23 [info]: Addresses retrieved successfully for user: 67fabfd36a82fce929640f04
+2025-04-12 21:43:42 [info]: Addresses retrieved successfully for user: 67fabfd36a82fce929640f04
+2025-04-12 21:47:18 [error]: [POST] /auth/login → Invalid email or password
+2025-04-12 21:47:42 [error]: [POST] /auth/login → Invalid email or password
+2025-04-12 21:48:28 [info]: OTP sent to email: customer@example.com
+2025-04-12 21:49:20 [info]: Password reset successfully for email: customer@example.com
+2025-04-12 21:49:36 [info]: User logged in successfully: 67f2f14f8fcddcace32b0420
+2025-04-12 21:50:24 [info]: Fetched 2 users from the database for userId: 67f2f14f8fcddcace32b0420
+2025-04-12 21:51:08 [info]: Fetched 1 users from the database for userId: 67f2f14f8fcddcace32b0420
+2025-04-12 21:53:26 [info]: Fetched 1 users from the database for userId: 67f2f14f8fcddcace32b0420
+2025-04-12 21:53:35 [info]: Fetched 2 users from the database for userId: 67f2f14f8fcddcace32b0420
+2025-04-12 21:54:38 [info]: Fetched user cosumer from the database for userId: 67f2f14f8fcddcace32b0420
+2025-04-12 21:54:48 [info]: Fetched user cosumer from the database for userId: 67f2f14f8fcddcace32b0420
+2025-04-12 21:55:00 [info]: Updated user role for userId: 67fabfd36a82fce929640f04, by UserId: 67f2f14f8fcddcace32b0420
+2025-04-12 21:55:06 [info]: Updated user role for userId: 67fabfd36a82fce929640f04, by UserId: 67f2f14f8fcddcace32b0420
+2025-04-12 21:55:17 [info]: Updated user role for userId: 67fabfd36a82fce929640f04, by UserId: 67f2f14f8fcddcace32b0420

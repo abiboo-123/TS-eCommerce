@@ -1,7 +1,9 @@
-# 🚀 E-Commerce Backend API (TypeScript + MongoDB)
+# 🚀 DTC E-Commerce Backend API (TypeScript + MongoDB)
 
-**Production-grade** backend powering an e-commerce platform with blazing-fast **JWT auth**, secure **role-based access**, precise **Zod validation**,
-and beautiful **Swagger documentation**.
+This is a **production-ready** Direct-to-Consumer (DTC) e-commerce backend built with modern tooling like **TypeScript**, **Express**, **MongoDB**,
+and **Zod**.
+
+It includes **JWT authentication**, **admin/consumer roles**, full **cart & order flow**, and is ready for **frontend collaboration**!
 
 [![License](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)  
 [![TypeScript](https://img.shields.io/badge/TypeScript-5.0+-3178C6.svg)](https://www.typescriptlang.org/)  
@@ -9,55 +11,66 @@ and beautiful **Swagger documentation**.
 
 ---
 
-## ✨ **Features**
+## ✨ Features
 
 ### ✅ **Completed Modules**
 
-| Module           | Key Features                                                                     |
-| ---------------- | -------------------------------------------------------------------------------- |
-| **Auth**         | Register/login (JWT), OTP password reset, role-based access (`admin`/`consumer`) |
-| **User Profile** | CRUD operations, image uploads (Multer)                                          |
-| **Addresses**    | Multiple addresses, default address logic                                        |
-| **Products**     | Admin-only CRUD, public browsing, image uploads, Zod validation                  |
-| **Cart**         | Add/remove/update cart items, calculate total                                    |
-| **Checkout**     | Place order from cart, optional coupon validation                                |
-| **Orders**       | View, cancel, return orders with stock updates                                   |
-| **API Docs**     | Interactive Swagger UI at `/api-docs`                                            |
+| Module             | Key Features                                                              |
+| ------------------ | ------------------------------------------------------------------------- |
+| **Auth**           | Register/login (JWT), OTP password reset, refresh tokens                  |
+| **User Profile**   | Image upload, edit profile, mobile & name updates                         |
+| **Addresses**      | Add/update/delete addresses, with default address handling                |
+| **Products**       | Admin CRUD, image uploads, filtering, search                              |
+| **Cart**           | Add/remove/update items, calculate total                                  |
+| **Checkout**       | Address-based checkout, optional coupons                                  |
+| **Orders**         | View, cancel, return orders, restock items                                |
+| **Coupons**        | Admin CRUD, usage tracking, fixed/percent logic                           |
+| **Admin Panel**    | Dashboard stats, filters on users/orders/products, secure access          |
+| **API Docs**       | Fully documented via Swagger (auto-generated routes and schemas)          |
+| **Error Handling** | Global structured error responses via `AppError` + centralized middleware |
+| **Logging**        | Winston-powered logging system (errors, info, warnings with rotation)     |
 
-### 🔜 **Upcoming Modules**
+### 💡 Upcoming Improvements
 
-- Admin dashboard APIs
-- Global error middleware
-- PayPal integration (payments)
+- Global search across models
+- Rate-limiting and brute-force protection
+- Multi-vendor support
+- Admin analytics with charting
+- PayPal payment integration
+- Soft deletes / archival
+- Unit tests & test coverage
 
 ---
 
-## 🛠 **Tech Stack**
+## 🛠 Tech Stack
 
 - **Backend**: Node.js, Express, TypeScript
-- **Database**: MongoDB (Mongoose ODM)
+- **Database**: MongoDB with Mongoose ODM
 - **Validation**: Zod
-- **Security**: JWT, Helmet, CORS
-- **Tools**: Multer (file uploads), Swagger (documentation)
+- **Docs**: Swagger (OpenAPI)
+- **Security**: JWT Auth, Helmet, CORS, role-based access
+- **Uploads**: Multer (file uploads to `uploads/`)
+- **Logging**: Winston
+- **Error Handling**: Custom middleware + class-based errors
 
 ---
 
 ## 🚀 **Quick Start**
 
 ```bash
-# 1. Clone and install
+# 1. Clone & install dependencies
 git clone https://github.com/TS-eCommerce.git
 cd TS-eCommerce
 npm install
 
-# 2. Configure environment variables
-cp .env.example .env  # Edit with your MongoDB/JWT keys
+# 2. Configure env
+cp .env.example .env   # then fill in your MongoDB URI & JWT secrets
 
-# 3. Run in dev mode (hot-reload)
+# 3. Start in dev mode
 npm run dev
 
-# 4. Access Swagger docs
-open http://localhost:5000/api-docs
+# 4. Visit Swagger UI
+http://localhost:5000/api-docs
 ```
 
 ---
@@ -66,18 +79,20 @@ open http://localhost:5000/api-docs
 
 ```
 src/
-├── controllers/        # Request handlers
-├── docs/               # Swagger documentations
-├── services/           # Needed services
+├── controllers/        # Route handlers
 ├── models/             # Mongoose schemas
-├── routes/             # Route definitions
-├── validations/        # Zod schemas
-├── middlewares/        # Custom middleware
-├── utils/              # Helper utils
-├── app.ts              # Entry point
+├── routes/             # All route files
+├── middlewares/        # Auth, error, validation, logging
+├── utils/              # Helpers: logger, AppError, etc.
+├── services/           # Reusable business logic
+├── validations/        # Zod validators
+├── docs/               # Swagger docs
+├── app.ts              # Express config & entry point
 ```
 
 ## 👨‍💻 Author
+
+### Habib Gouda
 
 - GitHub: [abiboo-123](https://github.com/abiboo-123)
 
